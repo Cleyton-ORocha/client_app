@@ -3,7 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { ClientesFormComponent } from './clientes-form/clientes-form.component'
 
 const routes: Routes = [
-  { path: 'clientForm', component: ClientesFormComponent}
+  { path: 'clientes-form', component: ClientesFormComponent}
 ];
 
 @NgModule({
