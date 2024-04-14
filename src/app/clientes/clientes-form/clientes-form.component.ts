@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Cliente } from '../cliente';
 
+import { ClientesService } from "../../services/clientes.service";
+
 @Component({
   selector: 'app-clientes-form',
   templateUrl: './clientes-form.component.html',
@@ -12,11 +14,10 @@ export class ClientesFormComponent implements OnInit {
 
   ngOnInit(): void { };
 
-  constructor() { 
-    this.cliente = new Cliente();
+  constructor( private service : ClientesService) { 
   };
 
-  clicar(){
+  onSubmit(){
     console.log(this.cliente)
   }
 
