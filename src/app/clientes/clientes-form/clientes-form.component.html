@@ -5,9 +5,21 @@
 </ol>
 
 <div class="conteiner">
-    <form #clienteForm="ngForm" (onSubmit)="onSubmit()">
+    <form #clienteForm="ngForm" (ngSubmit)="onSubmit()">
         <div class="row">
             <div class="row">
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="alert alert-success" role="alert" *ngIf="success === true">
+                            Cliente salvo/cadastrado com sucesso!
+                        </div>
+                        <div class="alert alert-danger" role="alert" *ngFor="let error of errors">
+                            {{error}}
+                        </div>
+                    </div>
+                </div>
+
                 <div class="col-md-6">
                     <div class="form-group">
                         <label for="">ID:</label>
@@ -18,7 +30,8 @@
                 <div class="col-md-6">
                     <div class="form-group">
                         <label for="">Data Cadastro:</label>
-                        <input type="text" class="form-control" disabled=true [ngModel]="cliente.dataCadastro" name="dataCadastro">
+                        <input type="text" class="form-control" disabled=true [ngModel]="cliente.dataCadastro"
+                            name="dataCadastro">
                     </div>
                 </div>
             </div>
@@ -27,7 +40,7 @@
                 <div class="col-md-6">
                     <div class="form-group">
                         <label for="">Nome:</label>
-                        <input type="text" class="form-control" [(ngModel)]="cliente.nome" name="nome">
+                        <input type="text" class="form-control" [(ngModel)]="cliente.name" name="name">
                     </div>
                 </div>
 

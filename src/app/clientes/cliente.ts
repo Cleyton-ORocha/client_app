@@ -1,6 +1,6 @@
 export class Cliente {
     id: number;
-    nome: string;
+    name: string;
     cpf: string;
     dataCadastro: string;
 }
