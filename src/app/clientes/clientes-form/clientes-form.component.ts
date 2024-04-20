@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Cliente } from '../cliente';
 
+
 import { ClientesService } from "../../services/clientes.service";
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-clientes-form',
@@ -9,20 +11,19 @@ import { ClientesService } from "../../services/clientes.service";
   styleUrl: './clientes-form.component.css'
 })
 export class ClientesFormComponent implements OnInit {
-
-  cliente: Cliente;
+  cliente: Cliente = new Cliente();
   success: boolean = false;
-  errors: String[];
+  errors: String[] = [];
 
   ngOnInit(): void { };
 
-  constructor(private service: ClientesService) {
-  };
+  constructor(private service: ClientesService, private router: Router) { };
 
-  onSubmit() {
-    this.service.salvar(this.cliente)
+  onSubmit(): void {
+    this.service
+      .salvar(this.cliente)
       .subscribe({
-        next: (response:Cliente) => {
+        next: (response: Cliente) => {
           this.success = true;
           this.errors = [];
           this.cliente = response;
@@ -34,4 +35,7 @@ export class ClientesFormComponent implements OnInit {
       })
   }
 
+  voltarParaListagem() {
+    this.router.navigate(['/clientes-lista']);
+  }
 }

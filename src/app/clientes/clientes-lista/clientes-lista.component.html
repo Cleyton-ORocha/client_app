@@ -5,7 +5,7 @@
 
 <div class="row">
     <div class="col-md-2">
-        <button class="btn btn-warning">
+        <button class="btn btn-warning my-3" (click)="novoCadastro()">
             <i class="fa fa-plus"></i> Novo
         </button>
     </div>
@@ -23,7 +23,13 @@
                 </tr>
             </thead>
             <tbody>
-
+                <tr *ngFor="let cliente of clientes">
+                    <td>{{ cliente.id }}</td>
+                    <td>{{ cliente.name }}</td>
+                    <td>{{ cliente.cpf }}</td>
+                    <td>{{ cliente.dataCadastro }}</td>
+                    <td></td>
+                </tr>
             </tbody>
         </table>
     </div>
