@@ -30,11 +30,29 @@
                     <td>{{ cliente.dataCadastro }}</td>
                     <td>
                         <button class="btn btn-primary" routerLink="/clientes-form/{{ cliente.id }}">
-                             <i class="fa fa-edit"></i>
+                            <i class="fa fa-edit"></i>
+                        </button>
+
+                        <button class="btn btn-danger ml-2" data-bs-toggle="modal" data-bs-target="#modalSelecao" (click)="preparaDelecao(cliente)">
+                            <i class="fa fa-trash"></i>
                         </button>
                     </td>
                 </tr>
             </tbody>
         </table>
+    </div>
+    <div id="modalSelecao" class="modal fade" role="dialog">
+        <div class="modal-dialog text-center">
+            <div class="modal-content">
+                <i id="imgWarning" class="fa fa-exclamation-circle rounded mx-auto d-block modal-header"></i>
+                <div class="modal-body" *ngIf="clienteSelecionado">
+                    Confirma a deleção do(a) cliente {{ clienteSelecionado.name }}?
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-success">Confirmar</button>
+                    <button class="btn btn-default border ml-2" data-bs-dismiss="modal">Cancelar</button>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
