@@ -1,7 +1,7 @@
 <h1 class="mt-4">Clientes</h1>
 
 <ol class="breadcrumb mb-4">
-    <li class="breadcrumb-item active" aria-current="page">Cadastro</li>
+    <li class="breadcrumb-item active" aria-current="page">{{ cliente.id ? "Edição" : "Cadastrar" }} </li>
 </ol>
 
 <div class="conteiner">
@@ -20,14 +20,14 @@
                     </div>
                 </div>
 
-                <div class="col-md-6">
+                <div class="col-md-6" *ngIf="cliente.id">
                     <div class="form-group">
                         <label for="">ID:</label>
-                        <input type="text" class="form-control" disabled=true [ngModel]="cliente.id" name="id">
+                        <input type="text" class="form-control" disabled=true [ngModel]="cliente.id" name="id" >
                     </div>
                 </div>
 
-                <div class="col-md-6">
+                <div class="col-md-6" *ngIf="cliente.dataCadastro">
                     <div class="form-group">
                         <label for="">Data Cadastro:</label>
                         <input type="text" class="form-control" disabled=true [ngModel]="cliente.dataCadastro"
@@ -54,11 +54,16 @@
 
             <div class="row">
                 <div class="col-md-4">
-                    <button type="submit" class="btn btn-success">
+                    <button type="submit" class="btn btn-success" *ngIf="!cliente.id">
                         <i class="fa fa-save"></i> Salvar
                     </button>
 
-                    <button type="button" class="btn btn-danger ml-3" (click)="voltarParaListagem()">
+                    <button type="submit" class="btn btn-primary" *ngIf="cliente.id">
+                        <i class="fa fa-sync-alt"></i> Atualizar
+                    </button>
+
+                    <button type="button" class="btn btn-danger ml-3"
+                        (click)="voltarParaListagem()">
                         <i class="fa fa-arrow-alt-circle-left"></i> Voltar
                     </button>
                 </div>
