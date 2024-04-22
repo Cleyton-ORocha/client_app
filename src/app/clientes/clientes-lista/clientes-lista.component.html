@@ -1,7 +1,18 @@
 <h1 class="mt-4">Clientes</h1>
-<ol class="breadcrumb mb-4">
-    <li class="breadcrumb-item active" aria-current="page">Consulta</li>
+<ol class="breadcrumb p-3 bg-body-tertiary rounded-3">
+    <li class="breadcrumb-item " aria-current="page">Consulta</li>
 </ol>
+
+<div class="row">
+    <div class="col-md-6">
+        <div class="alert alert-success" role="alert" *ngIf="mensagemSucesso">
+            {{ mensagemSucesso }}
+        </div>
+        <div class="alert alert-danger" role="alert" *ngIf="mensagemErro">>
+            {{ mensagemErro }}
+        </div>
+    </div>
+</div>
 
 <div class="row">
     <div class="col-md-2">
@@ -9,7 +20,7 @@
             <i class="fa fa-plus"></i> Novo
         </button>
     </div>
-</div>
+</div> 
 <div class="row">
     <div class="col-md-12">
         <table class="table table-condensed table-hover">
@@ -49,7 +60,7 @@
                     Confirma a deleção do(a) cliente {{ clienteSelecionado.name }}?
                 </div>
                 <div class="modal-footer">
-                    <button class="btn btn-success">Confirmar</button>
+                    <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#modalDelecao" data-bs-dismiss="modal" (click)="deletarCliente()">Confirmar</button>
                     <button class="btn btn-default border ml-2" data-bs-dismiss="modal">Cancelar</button>
                 </div>
             </div>
