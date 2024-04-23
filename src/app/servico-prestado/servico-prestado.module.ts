@@ -15,9 +15,9 @@ import { ServicoPrestadoRoutingModule } from './servico-prestado-routing.module'
   ],
   imports: [
     CommonModule,
-    ServicoPrestadoRoutingModule,
     FormsModule,
-    RouterModule
+    RouterModule,
+    ServicoPrestadoRoutingModule 
   ],
   exports: [
     ServicoPrestadoFormComponent,

@@ -36,7 +36,7 @@
             <tbody>
                 <tr *ngFor="let cliente of clientes">
                     <td>{{ cliente.id }}</td>
-                    <td>{{ cliente.name }}</td>
+                    <td>{{ cliente.nome }}</td>
                     <td>{{ cliente.cpf }}</td>
                     <td>{{ cliente.dataCadastro }}</td>
                     <td>
@@ -57,7 +57,7 @@
             <div class="modal-content">
                 <i id="imgWarning" class="fa fa-exclamation-circle rounded mx-auto d-block modal-header"></i>
                 <div class="modal-body" *ngIf="clienteSelecionado">
-                    Confirma a deleção do(a) cliente {{ clienteSelecionado.name }}?
+                    Confirma a deleção do(a) cliente {{ clienteSelecionado.nome }}?
                 </div>
                 <div class="modal-footer">
                     <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#modalDelecao" data-bs-dismiss="modal" (click)="deletarCliente()">Confirmar</button>
