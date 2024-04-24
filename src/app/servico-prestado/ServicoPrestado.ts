@@ -1,4 +1,4 @@
-export class servicoPrestado{
+export class ServicoPrestado{
     descricao: String;
     preco: String;
     data: String;
