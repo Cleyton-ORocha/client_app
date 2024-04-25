@@ -2,9 +2,8 @@ import { Component, OnInit } from '@angular/core';
 
 import { Cliente } from '../../clientes/cliente';
 import { ClientesService } from '../../services/clientes.service';
-import { ServicoPrestado } from '../ServicoPrestado';
 import { ServicoPrestadoService } from '../../services/servico-prestado.service';
-import { ThisReceiver } from '@angular/compiler';
+import { ServicoPrestado } from '../ServicoPrestado';
 
 @Component({
   selector: 'app-servico-prestado-form',
@@ -13,15 +12,20 @@ import { ThisReceiver } from '@angular/compiler';
 })
 export class ServicoPrestadoFormComponent implements OnInit {
 
-  clientes: Cliente[] = [];
   servicoPrestado: ServicoPrestado;
+  success: boolean = false;
+  clientes: Cliente[];
+  errors: String[];
 
   constructor(
     private clienteService: ClientesService,
     private servicoPrestadoService: ServicoPrestadoService
   ) {
     this.servicoPrestado = new ServicoPrestado();
-   }
+    this.success = false;
+    this.clientes = [];
+    this.errors = []
+  }
 
   ngOnInit(): void {
     this.clienteService
@@ -33,9 +37,18 @@ export class ServicoPrestadoFormComponent implements OnInit {
   }
 
   onSubmit(): void {
-    this.servicoPrestadoService.salvar(this.servicoPrestado).subscribe({
-      next: (response: ServicoPrestado) => this.servicoPrestado = response
-    })
+    this.servicoPrestadoService
+      .salvar(this.servicoPrestado)
+      .subscribe({
+        complete: () => {
+          this.success = true;
+          this.errors = [];
+          this.servicoPrestado = new ServicoPrestado();
+        },
+        error: (errorResponse) => {
+          this.success = false;
+          this.errors = errorResponse.error.erros;
+        }
+      })
   }
-
 }

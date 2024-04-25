@@ -22,8 +22,8 @@ export class ClientesService {
     return this.http.put<Cliente>(`${this.apiURL}/${cliente.id}`, cliente);
   }
 
-  deletar(id: number): Observable<any> {
-    return this.http.delete<any>(`${this.apiURL}/api/clientes/${id}`);
+  deletar(id: number): Observable<Cliente> {
+    return this.http.delete<any>(`${this.apiURL}/${id}`);
   }
 
   getClientes(): Observable<Cliente[]> {
